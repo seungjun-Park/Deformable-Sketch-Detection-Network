@@ -1,0 +1,59 @@
+module:
+  target: models.edge.sd.SketchDetectionNetwork
+  params:
+    in_channels: 3
+    out_channels: 1
+    embed_dim: 16
+    hidden_dims: [ 32, 64, 128, 256 ]
+    num_blocks: 1
+    dropout: 0.0
+    drop_path: 0.0
+    deformable_group_channels: 16
+    offset_scale: 1.0
+    modulation_type: 'none'
+    dw_kernel_size: 7
+    num_groups: 16
+    act: 'gelu'
+    use_conv: True
+    pool_type: 'conv'
+    mode: 'nearest'
+    dim: 2
+    use_checkpoint: True
+    lr: 2e-5
+    weight_decay: 0.0
+    lr_decay_epoch: 100
+    log_interval: 10
+    ckpt_path: './checkpoints/sd/arknights/sd_best.ckpt'
+
+    loss_config:
+      target: modules.loss.edge_perceptual.EdgeLPIPSWithDiscriminator
+      params:
+        bdcn_weight: 1.0
+        lpips_weight: 1.2
+        balanced_l1_weight: 1.2
+        cats_weight: [1.0, 0.0, 1.2]
+        content_weight: 0.5
+
+data:
+  target: modules.datasets.util.DataModuleFromConfig
+  params:
+    num_workers: 4
+    batch_size: 1
+    wrap: True
+    train:
+      target: modules.datasets.arknights.ArknightsDataset
+      params:
+        # root: '/local_datasets/anime'
+        root: 'D:/datasets/anime'
+        train: True
+        size: 512
+        color_space: 'rgb'
+
+    validation:
+      target: modules.datasets.arknights.ArknightsDataset
+      params:
+        # root: '/local_datasets/anime'
+        root: 'D:/datasets/anime'
+        train: False
+        size: 512
+        color_space: 'rgb'
