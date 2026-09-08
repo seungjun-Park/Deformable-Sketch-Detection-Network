@@ -9,7 +9,7 @@ I use my custom handmake sketch(edge) dataset instead general benchmark datasets
 - Model params: 6.2M
 
 ## Dataset  
-[Anime] Dataset (included nude pictures, and not multiscale)  
+[Anime] Dataset  
 - train: 120 images, edges  
 - val: 10 images, edges  
 
