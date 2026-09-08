@@ -15,7 +15,7 @@ I use my custom handmake sketch(edge) dataset instead general benchmark datasets
 - val: 35 images, edges  
 
 ## Checkpoints
-Google Drive(https://drive.google.com/file/d/1ebIzZpXF08nTmdSy7gp7jwug7YKOx20e/view?usp=drive_link)
+[Google Drive](https://drive.google.com/file/d/1ebIzZpXF08nTmdSy7gp7jwug7YKOx20e/view?usp=drive_link)
 
 ## Performance  
 
