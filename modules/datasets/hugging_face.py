@@ -7,7 +7,7 @@ from huggingface_hub import hf_hub_download
 # from waifuc.source import LocalSource
 
 characters = ['wakamo']
-dataset_path = '../../datasets/anime'
+dataset_path = 'D:/datasets'
 
 for name in characters:
     # download raw archive file

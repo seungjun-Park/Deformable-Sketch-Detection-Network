@@ -95,8 +95,8 @@ def main():
     trainer = Trainer(
         logger=logger,
         callbacks=callbacks,
-        enable_progress_bar=False,
-        detect_anomaly=True,
+        enable_progress_bar=True,
+        detect_anomaly=False,
         **trainer_configs
     )
 
@@ -122,7 +122,7 @@ def test():
     model = instantiate_from_config(config.module).eval().to(device)
 
     # data_path = './datasets/arknights_v2/train/surtr/images'
-    data_path = '/local_datasets/wakamo/val/images'
+    data_path = '../test/images'
     file_names = glob.glob(f'{data_path}/*.*')
     with torch.no_grad():
         for name in tqdm.tqdm(file_names):
@@ -137,15 +137,19 @@ def test():
                 h = math.ceil(h / 8) * 8
             img = torchvision.transforms.transforms.Resize([h, w])(img)
             img = img.unsqueeze(0)
-            img = model(img)
+            edge = model(img)
+            edge = edge.detach().cpu()
             img = img.detach().cpu()
             if len(img.shape) == 4:
                 img = img[0]
+                edge = edge[0]
             img = torchvision.transforms.ToPILImage()(img)
+            edge = torchvision.transforms.ToPILImage()(edge)
             p1, p2 = name.rsplit('images', 1)
-            if not os.path.isdir(f'{p1}/edges_v2'):
-                os.mkdir(f'{p1}/edges_v2')
-            img.save(f'{p1}/edges_v2/{p2}.png', 'png')
+            os.makedirs(f'{p1}/edges', exist_ok=True)
+            os.makedirs(f'{p1}/images', exist_ok=True)
+            img.save(f'{p1}/images/{p2}', 'png')
+            edge.save(f'{p1}/edges/{p2}', 'png')
             # p1, p2 = name.rsplit('imgs', 1)
             # img.save(f'{p1}/edge_maps/{p2}', 'png')
 

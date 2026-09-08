@@ -16,7 +16,7 @@ dependencies:
       - huggingface
       - einops
       - matplotlib
-      - opencv-python
+      - opencv-python==4.11.0.86
       - pudb
       - imageio
       - imageio-ffmpeg
@@ -31,4 +31,5 @@ dependencies:
       - lmdb
       - timm
       - ninja
-      # - -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
+      - setuptools
+      - -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers

@@ -23,14 +23,14 @@ module:
     weight_decay: 0.0
     lr_decay_epoch: 100
     log_interval: 10
-    ckpt_path: './checkpoints/sd/arknights/sd_train.ckpt'
+    ckpt_path: './checkpoints/sd/arknights/sd_best.ckpt'
 
     loss_config:
       target: modules.loss.edge_perceptual.EdgeLPIPSWithDiscriminator
       params:
         bdcn_weight: 1.0
-        lpips_weight: 1.0
-        balanced_l1_weight: 1.0
+        lpips_weight: 1.2
+        balanced_l1_weight: 1.2
         cats_weight: [1.0, 0.0, 1.2]
         content_weight: 0.5
 
@@ -38,13 +38,13 @@ data:
   target: modules.datasets.util.DataModuleFromConfig
   params:
     num_workers: 4
-    batch_size: 2
+    batch_size: 1
     wrap: True
     train:
       target: modules.datasets.arknights.ArknightsDataset
       params:
-        root: '/local_datasets/anime'
-        # root: './datasets/anime'
+        # root: '/local_datasets/anime'
+        root: 'D:/datasets/anime'
         train: True
         size: 512
         color_space: 'rgb'
@@ -53,8 +53,8 @@ data:
     validation:
       target: modules.datasets.arknights.ArknightsDataset
       params:
-        root: '/local_datasets/anime'
-        # root: './datasets/anime'
+        # root: '/local_datasets/anime'
+        root: 'D:/datasets/anime'
         train: False
         size: 512
         color_space: 'rgb'
@@ -98,5 +98,5 @@ checkpoints:
 
 trainer:
   accelerator: 'gpu'
-  max_epochs: 300
+  max_epochs: 200
   accumulate_grad_batches: 5

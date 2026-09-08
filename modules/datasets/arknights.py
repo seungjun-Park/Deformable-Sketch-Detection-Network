@@ -62,7 +62,7 @@ class ArknightsDataset(Dataset):
         else:
             root = os.path.join(root, 'val')
 
-        self.edge_names = glob.glob(f'{root}/*/edges/*.*')
+        self.edge_names = glob.glob(f'{root}/*/edges_0/*.*')
         self.img_names = glob.glob(f'{root}/*/images/*.*')
 
         self.color_jitter = transforms.ColorJitter(brightness=0, contrast=0.5, saturation=0.5, hue=0.5)
@@ -313,7 +313,7 @@ class ArknightsImageEdgeClassification(Dataset):
         else:
             root = os.path.join(root, 'val')
 
-        self.edge_names = glob.glob(f'{root}/*/edges/*.*')
+        self.edge_names = glob.glob(f'{root}/*/edges_0/*.*')
         self.img_names = glob.glob(f'{root}/*/images/*.*')
 
     def __getitem__(self, index):

@@ -167,3 +167,7 @@ cython_debug/
 .idea/vcs.xml
 .idea/inspectionProfiles/profiles_settings.xml
 .idea/inspectionProfiles/Project_Default.xml
+logs/*
+checkpoints/*
+*.pyd
+modules/build

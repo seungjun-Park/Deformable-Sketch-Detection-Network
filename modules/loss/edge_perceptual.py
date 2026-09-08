@@ -7,7 +7,7 @@ from typing import Union, List, Tuple
 from omegaconf import DictConfig
 from utils import cats_loss, bdcn_loss2, adopt_weight
 from utils.loss import hinge_d_loss, vanilla_d_loss, san_d_loss, wasserstein_d_loss, LFD
-from taming.modules.losses import LPIPS
+from taming.modules.losses.lpips import LPIPS
 
 
 class EdgeLPIPSWithDiscriminator(nn.Module):

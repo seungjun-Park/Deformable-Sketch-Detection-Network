@@ -4,18 +4,14 @@ When the input image is given, then model outs it's sketch(edge) version.
 I use my custom handmake sketch(edge) dataset instead general benchmark datasets.  
 
 ## Test Envrionment  
-- Windows/3070ti
+- NVIDIA A5000 24G
 - Train 512 x 512 image
 - Model params: 6.2M
-- CudaToolkit: 12.4
 
 ## Dataset  
-[Anime] Dataset  
-- train: 165 images, edges  
-- val: 35 images, edges  
-
-## Checkpoints
-[Google Drive](https://drive.google.com/file/d/1ebIzZpXF08nTmdSy7gp7jwug7YKOx20e/view?usp=drive_link)
+[Anime] Dataset (included nude pictures, and not multiscale)  
+- train: 120 images, edges  
+- val: 10 images, edges  
 
 ## Performance  
 
