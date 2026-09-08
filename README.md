@@ -14,6 +14,9 @@ I use my custom handmake sketch(edge) dataset instead general benchmark datasets
 - train: 165 images, edges  
 - val: 35 images, edges  
 
+## Checkpoints
+Google Drive(https://drive.google.com/file/d/1ebIzZpXF08nTmdSy7gp7jwug7YKOx20e/view?usp=drive_link)
+
 ## Performance  
 
 ### Anime
